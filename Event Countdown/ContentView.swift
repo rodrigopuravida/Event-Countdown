@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let events: [Event]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("CountDown for Events")
+        
+        List(events, id: \.self) {
+            event in
+            EventRow(event: event)
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(events: [Event(title: "Birthday", date: Date(), textColor: Color.red),
+        Event(title: "Graduation", date: Date(), textColor: Color.blue),
+        Event(title: "Wedding", date: Date(), textColor: Color.green)])
 }
