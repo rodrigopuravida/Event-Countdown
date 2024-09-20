@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventRow: View {
     
-    var event : Event
+    @Binding var event : Event
     
     var body: some View {
         VStack {
@@ -23,5 +23,5 @@ struct EventRow: View {
 }
 
 #Preview {
-    EventRow(event: Event(title: "Test Event", date: Date(), textColor: Color.blue))
+    EventRow(event: .constant(Event(title: "Test Event", date: Date(), textColor: Color.blue)))
 }

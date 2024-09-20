@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let events: [Event]
+    @State var events: [Event]
     
     var body: some View {
         
-        List(events, id: \.self) {
-            event in
-            EventRow(event: event)
+        List($events, id: \.self, editActions: .delete) {
+            $event in
+            EventRow(event: $event)
         }
     }
 }
