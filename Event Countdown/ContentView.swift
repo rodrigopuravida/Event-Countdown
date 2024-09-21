@@ -7,16 +7,15 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
     
     @State var events: [Event]
     
     var body: some View {
         
-        List($events, id: \.self, editActions: .delete) {
-            $event in
-            EventRow(event: $event)
-        }
+        EventsView(events: events)
     }
 }
 
