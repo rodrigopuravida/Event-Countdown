@@ -18,9 +18,20 @@ struct EventsView: View {
                 NavigationLink(value: event) {
                     EventRow(event: $event)
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        // Action when the button is tapped
+                        print("Plus button tapped")
+                    }) {
+                        Image(systemName: "plus")
+                    }
                 }
-                
+            }
+            
         }
+        
     }
 }
 
