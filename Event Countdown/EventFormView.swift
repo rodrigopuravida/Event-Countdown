@@ -16,12 +16,9 @@ struct EventFormView: View {
         Form {
             TextField("Title", text: $event.title)
                 .textFieldStyle(.roundedBorder)
-            TextField("Title", text: $event.title)
-                .textFieldStyle(.roundedBorder)
-            TextField("Title", text: $event.title)
-                .textFieldStyle(.roundedBorder)
-                
-            
+            DatePicker("Please enter a date", selection: $event.date, displayedComponents: .date)
+            ColorPicker("Set the text color", selection: $event.textColor)
+
         }
     }
 }
