@@ -13,7 +13,7 @@ struct Event_CountdownApp: App {
         WindowGroup {
             ContentView(events: [Event(title: "Birthday", date: Date(), textColor: Color.red),
                                          Event(title: "Graduation", date: Date(), textColor: Color.blue),
-                                         Event(title: "Wedding", date: Date(), textColor: Color.green)])
+                                 Event(title: "Wedding", date: Date(), textColor: Color.green)], event: Event(title: "", date: Date(), textColor: Color.green))
         }
     }
 }
