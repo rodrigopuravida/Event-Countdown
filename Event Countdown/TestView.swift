@@ -9,15 +9,16 @@ import SwiftUI
 
 struct TestView: View {
     @State var events: [Event]
-    @State var selectedEvent: Event 
-
+    @State var selectedEvent: Event
+    
     var body: some View {
         
         NavigationStack {
-            List($events, id: \.self, editActions: .delete) { $event in
-                // Using NavigationLink with tag and selection for programmatic navigation
+            // Sort events before passing them to List
+            List(events.sorted(by: { $0.date < $1.date }), id: \.self) { event in
+                // Pass the binding of the event into NavigationLink and EventRow
                 NavigationLink(value: event) {
-                    EventRow(event: $event)
+                    EventRow(event: Binding.constant(event))
                 }
             }
             .navigationTitle("Events")
@@ -29,17 +30,18 @@ struct TestView: View {
                     }
                 }
             }
-            // Handling navigationDestination for programmatic navigation
+            // Handling navigationDestination for type Event
             .navigationDestination(for: Event.self) { event in
-                EventFormView(event: Binding.constant(event)) // Bind event to EventFormView
+                EventFormView(event: Binding.constant(event)) // Binds event to EventFormView
             }
         }
     }
 }
 
 #Preview {
-    TestView(events: [Event(title: "Birthday", date: Date(), textColor: Color.red),
-                        Event(title: "Graduation", date: Date(), textColor: Color.blue),
-                        Event(title: "Wedding", date: Date(), textColor: Color.green)],
-               selectedEvent: Event(title: "", date: Date(), textColor: Color.green))
+    TestView(events: [Event(title: "Birthday", date: Date().addingTimeInterval(86400), textColor: Color.red),
+                      Event(title: "Graduation", date: Date(), textColor: Color.blue),
+                      Event(title: "Wedding", date: Date().addingTimeInterval(172800), textColor: Color.green)],
+             selectedEvent: Event(title: "", date: Date(), textColor: Color.green))
 }
+
