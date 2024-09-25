@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        EventsView(events: events, event: event)
+        EventsView(events: events, selectedEvent: event)
     }
 }
 
