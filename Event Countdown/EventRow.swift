@@ -15,6 +15,7 @@ struct EventRow: View {
         VStack {
             Text(event.title)
                 .font(.headline)
+                .foregroundColor(event.textColor)
             Text(event.date.formatted(.dateTime))
                 .font(.subheadline)
             Text(event.textColor.description)
