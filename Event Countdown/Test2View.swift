@@ -1,14 +1,13 @@
 //
-//  EventsView.swift
+//  Test2View.swift
 //  Event Countdown
 //
-//  Created by Rodrigo Carballo on 9/20/24.
+//  Created by Rodrigo Carballo on 9/26/24.
 //
-
 
 import SwiftUI
 
-struct EventsView: View {
+struct Test2View: View {
     @State var events: [Event]
     @State var selectedEvent: Event // Optional state to track the selected event
     
@@ -55,7 +54,7 @@ struct EventsView: View {
 }
 
 #Preview {
-    EventsView(events: [
+    Test2View(events: [
         Event(title: "Wedding", date: Date(), textColor: Color.red)
     ], selectedEvent: Event(title: "Wedding", date: Date(), textColor: Color.red))
 }

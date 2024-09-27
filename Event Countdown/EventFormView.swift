@@ -10,20 +10,30 @@ import SwiftUI
 struct EventFormView: View {
     
     //@Binding var event: Event?
-    @Binding var event : Event
+    @Binding var selectedEvent : Event
     
     var body: some View {
         Form {
-            TextField("Title", text: $event.title)
+            TextField("Title", text: $selectedEvent.title)
                 .textFieldStyle(.roundedBorder)
-                .foregroundColor(event.textColor)
-            DatePicker("Please enter a date", selection: $event.date, displayedComponents: .date)
-            ColorPicker("Set the text color", selection: $event.textColor)
-
+                .foregroundColor(selectedEvent.textColor)
+            DatePicker("Please enter a date", selection: $selectedEvent.date, displayedComponents: .date)
+            ColorPicker("Set the text color", selection: $selectedEvent.textColor)
+        }
+        .navigationTitle("Event Form")
+        .toolbar {
+            // Checkbox button to add the event to the array
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    //events.append(event)  // Adding event to the array
+                }) {
+                    Image(systemName: "checkmark.diamond")
+                }
+            }
         }
     }
 }
 
 #Preview {
-    EventFormView(event: .constant(Event(title: "", date: Date(), textColor: Color.blue)))
+    EventFormView(selectedEvent: .constant(Event(title: "", date: Date(), textColor: Color.blue)))
 }

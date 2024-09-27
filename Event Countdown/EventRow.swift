@@ -9,20 +9,20 @@ import SwiftUI
 
 struct EventRow: View {
     
-    @Binding var event : Event
+    @Binding var selectedEvent : Event
     
     var body: some View {
         VStack {
-            Text(event.title)
+            Text(selectedEvent.title)
                 .font(.headline)
-                .foregroundColor(event.textColor)
-            Text(event.date.formatted(.dateTime))
+                .foregroundColor(selectedEvent.textColor)
+            Text(selectedEvent.date.formatted(.dateTime))
                 .font(.subheadline)
-            Text(event.textColor.description)
+            Text(selectedEvent.textColor.description)
         }
     }
 }
 
 #Preview {
-    EventRow(event: .constant(Event(title: "Test Event", date: Date(), textColor: Color.blue)))
+    EventRow(selectedEvent: .constant(Event(title: "Test Event", date: Date(), textColor: Color.blue)))
 }
